@@ -94,13 +94,13 @@
 </dependency>	
 
 	</dependencies>
-<distributionManagement>
+<!-- <distributionManagement>
    <repository>
       <id>deploymentRepo</id>
       <name>deploymentRepo</name>
       <url>http://192.168.33.10:8081/repository/maven-releases/</url>
    </repository>
-</distributionManagement>
+</distributionManagement> -->
 	<build>
 		<plugins>
 			<plugin>
@@ -145,7 +145,7 @@
      <!-- <configuration> 
          <skip>true</skip> 
       </configuration> --> 
-   <executions>
+  <!-- <executions>
       <execution>
          <id>default-deploy</id>
          <phase>deploy</phase>
@@ -153,7 +153,7 @@
             <goal>deploy</goal>
          </goals>
       </execution>
-   </executions>
+   </executions> -->
 </plugin>
 
 		</plugins>
