@@ -1,5 +1,4 @@
-/*package com.esprit.examen.services;
-
+package com.esprit.examen.service;
 import static org.junit.Assert.*;
 import java.util.List;
 import org.junit.Test;
@@ -49,4 +48,3 @@ public class StockServiceImplTest {
 	}
 
 }
-*/
