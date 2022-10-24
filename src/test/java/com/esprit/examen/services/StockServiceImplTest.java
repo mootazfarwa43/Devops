@@ -1,12 +1,22 @@
 package com.esprit.examen.service;
 import static org.junit.Assert.*;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
 import com.esprit.examen.entities.Stock;
+import com.esprit.examen.service.IStockService;
+
+import lombok.extern.slf4j.Slf4j;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
