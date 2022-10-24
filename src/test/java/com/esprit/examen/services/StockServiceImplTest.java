@@ -13,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.esprit.examen.entities.Stock;
-import com.esprit.examen.service.IStockService;
+import com.esprit.examen.services.IStockService;
 
 import lombok.extern.slf4j.Slf4j;
 
