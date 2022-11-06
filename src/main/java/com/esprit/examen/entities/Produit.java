@@ -49,6 +49,30 @@ public class Produit implements Serializable {
 	private CategorieProduit categorieProduit;
 	
 
+	
+	
+	public Produit(String codeProduit, String libelleProduit, Date dateCreation, Date dateDerniereModification) {
+		super();
+		this.codeProduit = codeProduit;
+		this.libelleProduit = libelleProduit;
+		this.dateCreation = dateCreation;
+		this.dateDerniereModification = dateDerniereModification;
+	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "Produit [idProduit=" + idProduit + ", codeProduit=" + codeProduit + ", libelleProduit=" + libelleProduit
+				+ ", prix=" + prix + ", dateCreation=" + dateCreation + ", dateDerniereModification="
+				+ dateDerniereModification + "]";
+	}
+
+
+
+
+	
 
 	
 
