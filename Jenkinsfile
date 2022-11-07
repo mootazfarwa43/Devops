@@ -4,11 +4,11 @@ pipeline {
 
 	stages {
 		
-		stage('Junit') {
+	/*	stage('Junit') {
 			steps {
 				sh 'mvn test'
 			      } 
-		}
+		}*/
 		stage('Build Artifact - Maven') {
 			steps {
 				sh "mvn clean package -DskipTests=true"
@@ -16,7 +16,7 @@ pipeline {
 			      }
 		}
 		       
-		stage('SonarQube + JacOcO') {
+		/*stage('SonarQube + JacOcO') {
 			steps {
 				sh "mvn  sonar:sonar -Dsonar.projectKey=devops  -Dsonar.host.url=http://192.168.1.18:9000/  -Dsonar.login=377c2af0436a40e68167dd85cb99403a24851dfa"
 
@@ -45,7 +45,30 @@ pipeline {
          			  sh 'docker push yossra12/springproject:latest'
          			}
      			  }
-    		}
+    		}*/
+		 stage('Docker compose') {
+      		      steps {
+         parallel(
+           "Docker compose": {
+               sh 'docker-compose up '
+           },
+           "Delete running containers": {
+		       sh 'sleep 2m '
+               sh 'docker rm -f ci-spring ci-db ci-angular '
+           }
+         )
+       }
+     }
+	}  
+			post {
+				success {
+
+					echo "passed"
+				}    
+			       failure {
+				       echo "failed"
+				
+		                }
 
 	}  
 
