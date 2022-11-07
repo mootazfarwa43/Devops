@@ -43,10 +43,7 @@ public void testupdateproduit() {
 	System.out.println(p);
 }
 
-@Test
-public void testdeleteproduit() {
-	produitRepository.deleteById(9L);
-}
+
 @Test
 public void testFindAllproduit() {
 	List<Produit> prod=produitRepository.findAll();
