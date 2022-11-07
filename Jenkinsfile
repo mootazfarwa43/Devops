@@ -30,6 +30,22 @@ pipeline {
 			    } 
 
 		 }  
+		stage('Sonatype/Nexus deploy') {
+			steps {
+				//sh 'mvn clean deploy -DskipTests'
+				sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
+			      }
+		 } 
+		stage('Docker Build and Push') {
+                       steps {
+                               withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+         			  sh 'printenv'
+        			  sh 'docker build -t yossra12/springproject .'
+	 			  sh 'docker tag yossra12/springproject yossra12/springproject:latest'
+         			  sh 'docker push yossra12/springproject:latest'
+         			}
+     			  }
+    		}
 
 	}  
 
