@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+ mysqldb:
+  container_name: mysqldataa
+  image: mysql:8
+  restart: unless-stopped
+  environment:
+   MYSQL_ROOT_PASSWORD: root
+  volumes:
+   -/home/vagrant/mysqldata:/var/lib/mysql
+    
+ spring_app:
+  image: tpchat
+  container_name: tpachat 
+  restart: on-failure
+  depends_on:
+   -mysqldataa
