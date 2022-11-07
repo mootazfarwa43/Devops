@@ -1,0 +1,41 @@
+version: '3.7'
+services:
+  ci-db:
+    container_name: ci-db
+    image: mysql:8.0
+    networks:
+      - ci-network
+    environment:
+      - MYSQL_USER=yossra
+      - MYSQL_PASSWORD=Yossra1+2
+      - MYSQL_DATABASE=tpachato
+      - MYSQL_ROOT_PASSWORD=
+    volumes:
+      - dbvol:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    restart: always
+
+  ci-app:
+    container_name: ci-spring
+    image:
+    ports:
+      - "8089:8089"
+    networks:
+      - ci-network
+    depends_on:
+      - ci-db
+    environment:
+      - MYSQL_HOST=localhost
+      - MYSQL_USERNAME=yossra
+      - MYSQL_PASSWORD=Yossra1+2
+      - MYSQL_DATABASE=tpachato
+      - MYSQL_PORT=3306
+
+
+networks:
+  ci-network:
+    name: ci-network
+
+volumes:
+  dbvol:
