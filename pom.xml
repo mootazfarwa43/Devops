@@ -94,13 +94,13 @@
 </dependency>	
 
 	</dependencies>
-<!-- <distributionManagement>
+<distributionManagement>
    <repository>
       <id>deploymentRepo</id>
       <name>deploymentRepo</name>
       <url>http://192.168.1.18:8081/repository/maven-releases/</url>
    </repository>
-</distributionManagement> -->
+</distributionManagement>
 	<build>
 		<plugins>
 			<plugin>
