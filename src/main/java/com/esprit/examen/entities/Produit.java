@@ -176,7 +176,7 @@ public class Produit implements Serializable {
 
 
 
-	public Produit() {
+	public Produit(long l, Object object, Object object2, Object object3, Object object4, Object object5, Object object6, Object object7, Object object8, Object object9) {
 		super();
 		// TODO Auto-generated constructor stub
 	}
