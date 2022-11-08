@@ -1,46 +1,88 @@
 package com.esprit.examen.services;
-import static org.mockito.Mockito.verify;
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.any;
-import static org.mockito.Mockito.when;
-import java.util.ArrayList;
-import java.util.Optional;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.context.SpringBootTest;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import com.esprit.examen.entities.Produit;
-import com.esprit.examen.entities.Stock;
-import com.esprit.examen.repositories.CategorieProduitRepository;
-import com.esprit.examen.repositories.DetailFactureRepository;
-import com.esprit.examen.repositories.ProduitRepository;
-import com.esprit.examen.repositories.StockRepository;
-import springfox.documentation.spring.data.rest.OptionalDeferencer;
+@SpringBootTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ProduitServiceImplTest {
+
+	 @Autowired
+	    
+	    IProduitService ps;
+
+    @Test
+    void retrieveAllProduits() {
+    	List<Produit> listProduits = ps.retrieveAllProduits();
+        Assertions.assertEquals(0, listProduits.size());
+    }
+    
+	private String codeProduit;
+	private String libelleProduit;
+	private float prix;
+
+	private Date dateCreation;
 	
-	@MockBean
-    private CategorieProduitRepository categorieProduitRepository;
-    @MockBean
-    private ProduitRepository produitRepository;
-    @Autowired
-    private ProduitServiceImpl produitServiceImpl;
-    @MockBean
-    private StockRepository stockRepository;
-@Test
-   public void testRetreiveById(){
-	Produit p = new Produit();
-	p.setCategorieProduit(null);
-	p.setCodeProduit("123");
-	p.setDateCreation(null);
-	p.setDateDerniereModification(null);
-	p.setDetailFacture(null);
-	p.setIdProduit(1L);
-	p.setLibelleProduit("libelle");
-	p.setPrix((float)5.500);
-	p.setStock(null);
-	Optional<Produit> produits = Optional.of(p);
-	when(produitRepository.findById((Long) any())).thenReturn(produits);
-	assertSame(p,produitServiceImpl.retrieveProduit(1L));
-	verify(produitRepository).findById((Long) any());
-	
-}
+	private Date dateDerniereModification;
+    @Test
+    public void testAddProduit(){
+    List<Produit> Produits = ps.retrieveAllProduits();
+    int expected = Produits.size();
+    Produit p = new Produit();
+    p.setLibelleProduit("test");
+    p.setCodeProduit("codeProduit");
+    p.setPrix(10);
+    Date m = new Date(2022,11,05);
+    p.setDateCreation(m);
+
+    Produit savedProduit= ps.addProduit(p);
+    assertEquals(expected+1, ps.retrieveAllProduits().size());
+    assertNotNull(savedProduit.getLibelleProduit());
+    ps.deleteProduit(savedProduit.getIdProduit());
+
+    }
+
+
+
+    @Test
+    public void testUpdateProduit() {
+    Produit p = new Produit();
+    p.setLibelleProduit("test");
+    p.setLibelleProduit("test");
+    p.setCodeProduit("codeProduit");
+    p.setPrix(10);
+    Date m = new Date(2022,11,05);
+    p.setDateCreation(m);
+    Produit savedProduit= ps.addProduit(p);
+    savedProduit.setLibelleProduit("testproduit");;
+    ps.updateProduit(savedProduit);
+    assertEquals(p.getLibelleProduit(),savedProduit.getLibelleProduit());
+    ps.deleteProduit(savedProduit.getIdProduit());
+    }
+
+    @Test
+    public void testDeleteProduit() {
+    Produit p = new Produit();
+    p.setLibelleProduit("test");
+    p.setLibelleProduit("test");
+    p.setCodeProduit("codeProduit");
+    p.setPrix(10);
+    Date m = new Date(2022,11,05);
+    p.setDateCreation(m);
+    Produit savedService= ps.addProduit(p);
+    ps.deleteProduit(savedService.getIdProduit());
+    assertNotNull(savedService.getIdProduit());
+
+    }
+
 }
