@@ -25,7 +25,7 @@ class ProduitServiceImplTest {
     @Test
     void retrieveAllProduits() {
     	List<Produit> listProduits = ps.retrieveAllProduits();
-        Assertions.assertEquals(0, listProduits.size());
+        Assertions.assertEquals(1, listProduits.size());
     }
     
 	private String codeProduit;
