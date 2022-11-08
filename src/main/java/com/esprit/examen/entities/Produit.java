@@ -114,7 +114,9 @@ public class Produit implements Serializable {
 		this.detailFacture = detailFacture;
 		this.categorieProduit = categorieProduit;
 	}
-	
+	public Produit(long l, Object object, Object object2, Object object3, Object object4, Object object5, Object object6, Object object7, Object object8, Object object9) {
+		super();
+	}
 	public Produit() {
 		// TODO Auto-generated constructor stub
 	}

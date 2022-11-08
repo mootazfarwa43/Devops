@@ -1,4 +1,5 @@
 package com.esprit.examen.services;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
@@ -15,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import com.esprit.examen.entities.Produit;
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class ProduitServiceImplTest {
+class ProduitServiceImplTest {
 
 	 @Autowired
 	    
