@@ -15,4 +15,4 @@ services:
   container_name: tpachat 
   restart: on-failure
   depends_on:
-   - mysqldataa
+   - mysqldb
