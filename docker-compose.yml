@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
  mysqldb:
-  container_name: mysqldataa
+  container_name: mysqldb
   image: mysql:8
   restart: unless-stopped
   environment:
@@ -11,8 +11,8 @@ services:
    - /home/vagrant/mysqldata:/var/lib/mysql
     
  spring_app:
-  image: tpchat
-  container_name: tpachat 
+  image: achatproject
+  container_name: achatproject 
   restart: on-failure
   depends_on:
    - mysqldb
