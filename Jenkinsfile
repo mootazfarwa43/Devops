@@ -54,7 +54,7 @@ pipeline {
            },
            "Delete running containers": {
 		       sh 'sleep 1m '
-               sh 'docker rm -f ci-spring ci-db ci-angular '
+               sh 'docker rm -f ci-spring ci-db'
            }
          )
        }
