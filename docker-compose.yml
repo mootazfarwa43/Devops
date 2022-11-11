@@ -33,7 +33,7 @@ services:
       - MYSQL_USERNAME=yossra
       - MYSQL_PASSWORD=Yossra1+2
       - MYSQL_DATABASE=tpachato
-      - MYSQL_PORT=3307
+      - MYSQL_PORT=3306
       
 
 networks:
