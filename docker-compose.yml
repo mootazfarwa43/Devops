@@ -29,7 +29,7 @@ services:
     depends_on:
       - ci-db
     environment:
-      - MYSQL_HOST=ci-db
+      - MYSQL_HOST=mysql
       - MYSQL_USERNAME=root
       - MYSQL_ROOT_PASSWORD=Yossra1+3
       - MYSQL_DATABASE=tpachato
