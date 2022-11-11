@@ -8,11 +8,11 @@
 		<version>2.2.1.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>tn.esprit.rh</groupId>
-	<artifactId>achat</artifactId>
+	<groupId>com.esprit.examen</groupId>
+	<artifactId>tpAchatProject</artifactId>
 	<version>1.0</version>
-	<name>achat</name>
-	<description>Projet pour le module DevOps</description>
+	<name>tpAchatProject</name>
+	<description>tpAchatProject</description>
 	<properties>
 		<java.version>1.8</java.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
