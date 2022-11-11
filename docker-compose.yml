@@ -24,7 +24,6 @@ services:
     image: docker.io/yossra12/springproject:latest
     ports:
       - "8089:8089"
-    restart: always
     networks:
       - ci-network
     depends_on:
