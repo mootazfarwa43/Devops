@@ -1,5 +1,6 @@
 version: '3.7'
 services:
+
   ci-db:
     container_name: ci-db
     image: mysql:8.0
@@ -17,8 +18,10 @@ services:
     restart: always
 
   ci-app:
+    build:
+      context: .
     container_name: ci-spring
-    image: yossra12/springproject:latest
+    image: docker.io/yossra12/springproject:latest
     ports:
       - "8089:8089"
     networks:
@@ -31,7 +34,7 @@ services:
       - MYSQL_PASSWORD=Yossra1+2
       - MYSQL_DATABASE=tpachato
       - MYSQL_PORT=3306
-
+      
 
 networks:
   ci-network:
