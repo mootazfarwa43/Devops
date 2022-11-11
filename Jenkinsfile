@@ -4,11 +4,11 @@ pipeline {
 
 	stages {
 		
-	/*	stage('Junit') {
+		stage('Junit') {
 			steps {
 				sh 'mvn test'
 			      } 
-		}*/
+		}
 		stage('Build Artifact - Maven') {
 			steps {
 				sh "mvn clean package -DskipTests=true"
@@ -35,7 +35,7 @@ pipeline {
 				//sh 'mvn clean deploy -DskipTests'
 				sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
 			      }
-		 } 
+		 } */
 		stage('Docker Build and Push') {
                        steps {
                                withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
@@ -45,8 +45,8 @@ pipeline {
          			  sh 'docker push yossra12/springproject:latest'
          			}
      			  }
-    		}*/
-		 stage('Docker compose') {
+    		}
+		/* stage('Docker compose') {
       		      steps {
          parallel(
            "Docker compose": {
@@ -68,7 +68,7 @@ pipeline {
 			       failure {
 				       echo "failed"
 				
-		                }
+		                }*/
 
 	}  
 
