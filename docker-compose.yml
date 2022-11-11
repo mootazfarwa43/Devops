@@ -14,7 +14,7 @@ services:
     volumes:
       - dbvol:/var/lib/mysql
     ports:
-      - "3306:3306"
+      - "3307:3306"
     restart: always
 
   ci-app:
@@ -33,7 +33,7 @@ services:
       - MYSQL_USERNAME=yossra
       - MYSQL_PASSWORD=Yossra1+2
       - MYSQL_DATABASE=tpachato
-      - MYSQL_PORT=3306
+      - MYSQL_PORT=3307
       
 
 networks:
