@@ -9,6 +9,7 @@ services:
       - MYSQL_USER=yossra
       - MYSQL_PASSWORD=Yossra1+2
       - MYSQL_DATABASE=tpachato
+      - MYSQL_ROOT_PASSWORD=Yossra1+3
     volumes:
       - dbvol:/var/lib/mysql
     ports:
