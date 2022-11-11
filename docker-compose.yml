@@ -1,36 +1,44 @@
-version: "2"
-
+version: '3.7'
 services:
- mysqldb:
-   image: mysql:5.7
-   restart: unless-stopped
-   environment:
-     - MYSQL_DATABASE=tpachato
-   ports:
-      - "4000:3306"
-   volumes:
-      - db:/var/lib/mysql
- app:
-   container_name: spring
-   image: docker.io/yossra12/springproject:latest
-   depends_on:
-     - mysqldb
-   build: .
-   restart: on-failure
-   ports:
-     - "8089:8089"
-   environment:
-     SPRING_APPLICATION_JSON: '{
-       "spring.datasource.url"  : "jdbc:mysql://mysqldb:3306/tpachato?useSSL=false",
-       "spring.datasource.username" : "root",
-       "spring.datasource.password" : "Yossra1+3",
-       "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
-       "spring.jpa.hibernate.ddl-auto" : "update"}'
-   stdin_open: true
-   tty: true
-    
-    
- 
+
+
+  ci-db:
+    container_name: ci-db
+    image: mysql:8.0
+    networks:
+      - ci-network
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_DATABASE=tpachato
+      - MYSQL_ROOT_PASSWORD=Yossra1+3
+    volumes:
+      - dbvol:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    restart: always
+
+  ci-app:
+    build:
+      context: .
+    container_name: ci-spring
+    image: 
+    ports:
+      - "8089:8089"
+    networks:
+      - ci-network
+    depends_on:
+      - ci-db
+    environment:
+      - MYSQL_HOST=ci-db
+      - MYSQL_USERNAME=root
+      - MYSQL_ROOT_PASSWORD=Yossra1+3
+      - MYSQL_DATABASE=tpachato
+      - MYSQL_PORT=3306
+      
+
+networks:
+  ci-network:
+    name: ci-network
 
 volumes:
- db:
+  dbvol:
