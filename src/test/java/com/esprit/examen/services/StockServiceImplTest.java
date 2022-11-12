@@ -13,8 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import tn.esprit.rh.achat.entities.Stock;
-import tn.esprit.rh.achat.services.IStockService;
+import com.esprit.examen.entities.Stock;
+import com.esprit.examen.services.IStockService;
 
 @SpringBootTest
 @TestMethodOrder(OrderAnnotation.class)
