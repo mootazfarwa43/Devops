@@ -15,9 +15,9 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import tn.esprit.rh.achat.entities.Stock;
-import tn.esprit.rh.achat.repositories.StockRepository;
-import tn.esprit.rh.achat.services.StockServiceImpl;
+import com.esprit.examen.entities.Stock;
+import com.esprit.examen.repositories.StockRepository;
+import com.esprit.examen.services.StockServiceImpl;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)

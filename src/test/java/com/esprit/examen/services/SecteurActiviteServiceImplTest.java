@@ -13,9 +13,9 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import tn.esprit.rh.achat.entities.SecteurActivite;
-import tn.esprit.rh.achat.repositories.SecteurActiviteRepository;
-import tn.esprit.rh.achat.services.ISecteurActiviteService;
+import com.esprit.examen.entities.SecteurActivite;
+import com.esprit.examen.repositories.SecteurActiviteRepository;
+import com.esprit.examen.services.ISecteurActiviteService;
 
 
 @TestMethodOrder(OrderAnnotation.class)
