@@ -6,15 +6,16 @@ services:
   image: mysql:8
   restart: unless-stopped
   environment:
-   MYSQL_ROOT_PASSWORD: root
+   	  MYSQL_DATABASE: achatdb
+      MYSQL_ROOT_PASSWORD: root
   volumes:
    - /home/mysqldata:/var/lib/mysql
-    
- spring_app:
-  image: tpachat
-  container_name: tpachat 
-  restart: on-failure
-  ports:
-   - 9090:9090
-  depends_on:
-   - mysqldb
+
+  spring_app:
+    image: MedAmine1212/achat-1.0-s7:latest
+    container_name: achatspring
+    restart: on-failure
+    ports:
+      - 8089:8089
+    depends_on:
+      - mysqlbase
