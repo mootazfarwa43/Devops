@@ -47,7 +47,7 @@ public class SecteurActiviteServiceImplMock {
 	Assertions.assertNotNull(secteur);
 	
 	System.out.println(secteur); 
-	System.out.println(" Retrieve is working correctly...!!");  
+	System.out.println(" Retrieve sector works !");
 	
 	}
 	
@@ -62,7 +62,7 @@ public class SecteurActiviteServiceImplMock {
 		SecteurService.addSecteurActivite(secteur2);
 		verify(SecteurRepository, times(1)).save(secteur2);
 		System.out.println(secteur2); 
-		System.out.println(" Create is working correctly...!!");  
+		System.out.println(" Add sector works !!");
 	}
 	@Test
 	public void getAllSecteursTest()

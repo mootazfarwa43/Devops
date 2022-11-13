@@ -1,5 +1,6 @@
-package tn.esprit.rh.achat;
+package com.esprit.examen.services;
 
+import com.esprit.examen.repositories.OperateurRepository;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -9,12 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import tn.esprit.rh.achat.entities.Produit;
-import tn.esprit.rh.achat.entities.Stock;
-import tn.esprit.rh.achat.repositories.FactureRepository;
-import tn.esprit.rh.achat.repositories.ProduitRepository;
-import tn.esprit.rh.achat.repositories.StockRepository;
-import tn.esprit.rh.achat.services.IProduitService;
 import org.junit.runner.RunWith;
 
 import org.springframework.test.context.junit4.SpringRunner;
@@ -33,9 +28,9 @@ import java.util.stream.Stream;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
 
-import tn.esprit.rh.achat.entities.Operateur;
-import tn.esprit.rh.achat.repositories.OperateurRepository;
-import tn.esprit.rh.achat.services.IOperateurService;
+import com.esprit.examen.entities.Operateur;
+import com.esprit.examen.repositories.OperateurRepository;
+import com.esprit.examen.services.IOperateurService;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
 
@@ -48,8 +43,8 @@ public class OperateurServcieTest {
 	@MockBean
 	private OperateurRepository operateurRepository;
 	
-	private Operateur operateur1 = new Operateur("cyrine","ben hassine","546125");
-	private Operateur operateur2 = new Operateur("dina","ben hassine","546125");
+	private Operateur operateur1 = new Operateur("Med Amine","Khaili","123456");
+	private Operateur operateur2 = new Operateur("Flen","Fouleni","123456");
 	  
 	@Autowired
 	IOperateurService operateurService;
@@ -63,7 +58,7 @@ public class OperateurServcieTest {
     	Operateur persisted = operateurService.addOperateur(operateur1);
 		assertEquals(operateur1, persisted); 
     	
-		System.out.println("add works !");
+		System.out.println("Add operator works !");
 	}
     
     @Test 
@@ -84,7 +79,7 @@ public class OperateurServcieTest {
     	when(operateurRepository.save(operateur1)).thenReturn(operateur1);
     	assertNotNull(operateur1);
     	assertEquals(operateur1, operateurService.updateOperateur(operateur1));
-    	System.out.println("Update works!");
+    	System.out.println("Update operator works !");
     }
     
     @Test
