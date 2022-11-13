@@ -1,16 +1,14 @@
 version: "3.3"
-
 services:
- mysqldb:
-  container_name: mysqldb
-  image: mysql:8
-  restart: unless-stopped
-  environment:
-   	  MYSQL_DATABASE: achatdb
+  mysqlbase:
+    container_name: mysqlbase
+    image: mysql:8
+    restart: unless-stopped
+    environment:
+	  MYSQL_DATABASE: achatdb
       MYSQL_ROOT_PASSWORD: root
-  volumes:
-   - /home/mysqldata:/var/lib/mysql
-
+    volumes:
+      - /home/mysql/data:/var/lib/mysql
   spring_app:
     image: MedAmine1212/achat-1.0-s7:latest
     container_name: achatspring
