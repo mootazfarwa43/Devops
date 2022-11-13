@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.esprit.examen.entities.Stock;
-import com.esprit.examen.services.IStockService;
 
 @SpringBootTest
 @TestMethodOrder(OrderAnnotation.class)
@@ -22,13 +21,13 @@ public class StockServiceImplTest {
 	@Autowired
 	IStockService stockService;
 
-	/*@Test
+	@Test
 	@Order(1)
 	public void testRetrieveAllStocks() {
 	List<Stock> allStocks = stockService.retrieveAllStocks();
 	assertEquals(0,allStocks.size());
 	}
-	
+
 	@Test
 	@Order(2)
 	public void testAddStock() {
@@ -47,5 +46,5 @@ public class StockServiceImplTest {
 	public void testDeleteStock() {
 	stockService.deleteStock(1L);
 	assertNull(stockService.retrieveStock(1L));
-	}*/
+	}
 }

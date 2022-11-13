@@ -28,11 +28,11 @@ public class StockServiceImplMock {
     @InjectMocks
     StockServiceImpl stockServiceImpl;
 
-    Stock s= Stock.builder().libelleStock("test").qte(100).qteMin(10).build();
+    Stock s= new Stock("test",100,10);
     List<Stock> listStocks = new ArrayList<Stock>() {
         {
-            add(Stock.builder().libelleStock(" test1").qte(100).qteMin(10).build());
-            add(Stock.builder().libelleStock("test2").qte(200).qteMin(20).build());
+            add(new Stock("test1",100,10));
+            add(new Stock("test2",200,20));
         }
     };
     

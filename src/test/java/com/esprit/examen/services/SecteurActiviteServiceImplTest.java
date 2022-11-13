@@ -32,18 +32,17 @@ public class SecteurActiviteServiceImplTest {
 		assertEquals(0, allSActivite.size());
 	}
 
-	//@Test
-	//@Order(2)
-	//public void testAddSecteur() throws ParseException {
-	//	SecteurActivite sa = new SecteurActivite(null,"test","testtest",null);
-		//SecteurActivite savedSecteur = ISecteurActiviteService.addSecteurActivite(sa);
-		//assertEquals(sa.getlibelleSecteurActivite(), savedSecteur.getlibelleSecteurActivite());
-	//}
-//	@Test
-	////@Order(4)
-	//public void testDeleteStock() {
-	//	SecteurActivite.deleteSecteurActivite(10L);
-	//	assertNull(SecteurActivite.deleteSecteurActivite(10L));
-	//}
+	@Test
+	@Order(2)
+	public void testAddSecteur() throws ParseException {
+		SecteurActivite sa = new SecteurActivite(null,"test","testtest",null);
+		SecteurActivite savedSecteur = secteurService.addSecteurActivite(sa);
+		assertEquals(sa.getLibelleSecteurActivite(), savedSecteur.getLibelleSecteurActivite());
+	}
+	@Test
+	//@Order(4)
+	public void testDeleteStock() {
+		secteurService.deleteSecteurActivite(10L);
+	}
 
 }
