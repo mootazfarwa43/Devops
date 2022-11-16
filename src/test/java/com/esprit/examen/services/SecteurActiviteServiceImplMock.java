@@ -38,8 +38,11 @@ public class SecteurActiviteServiceImplMock {
 	
 	@Test
 	public void testRetrieveSecteur() {
-		
-		SecteurActivite secteur = new SecteurActivite(1L, "test1","test2",null);
+
+		SecteurActivite secteur = new SecteurActivite();
+		secteur.setCodeSecteurActivite("test");
+		secteur.setFournisseurs(null);
+		secteur.setLibelleSecteurActivite("test");
 		secteur.setIdSecteurActivite(1L);
 		
 	Mockito.when(SecteurRepository.findById(1L)).thenReturn(Optional.of(secteur));
@@ -56,7 +59,11 @@ public class SecteurActiviteServiceImplMock {
 	public void createSecteurTest()
 	{
 
-		SecteurActivite secteur2 = new SecteurActivite(null,"test","testtest",null);
+
+		SecteurActivite secteur2 = new SecteurActivite();
+		secteur2.setCodeSecteurActivite("test");
+		secteur2.setFournisseurs(null);
+		secteur2.setLibelleSecteurActivite("test");
 		secteur2.setIdSecteurActivite(2L);
 		
 		SecteurService.addSecteurActivite(secteur2);
@@ -70,9 +77,27 @@ public class SecteurActiviteServiceImplMock {
 		List<SecteurActivite> SecteurList = new ArrayList<SecteurActivite>() {
 
 			{
-		add(new SecteurActivite(null,"test1","salut",null));
-		add(new SecteurActivite(null,"test2","hello",null));
-		add(new SecteurActivite(null,"test3","hi",null));
+
+		SecteurActivite sa = new SecteurActivite();
+		sa.setCodeSecteurActivite("test1");
+		sa.setFournisseurs(null);
+		sa.setLibelleSecteurActivite("salut");
+
+
+		SecteurActivite sa2 = new SecteurActivite();
+		sa.setCodeSecteurActivite("test2");
+		sa.setFournisseurs(null);
+		sa.setLibelleSecteurActivite("hello");
+
+
+		SecteurActivite sa3 = new SecteurActivite();
+		sa.setCodeSecteurActivite("test3");
+		sa.setFournisseurs(null);
+		sa.setLibelleSecteurActivite("hi");
+
+		add(sa);
+		add(sa2);
+		add(sa3);
 			}};
 			
 			
@@ -87,7 +112,11 @@ public class SecteurActiviteServiceImplMock {
 	@Test
 	public void TestDeleteSecteur(){
 
-	SecteurActivite secteur1 = new SecteurActivite(null,"bbbb","no",null);
+	SecteurActivite secteur1 = new SecteurActivite();
+	secteur1.setCodeSecteurActivite("test");
+	secteur1.setFournisseurs(null);
+	secteur1.setLibelleSecteurActivite("test");
+
 	secteur1.setIdSecteurActivite(7L);
 	
 	Mockito.lenient().when(SecteurRepository.findById(secteur1.getIdSecteurActivite())).thenReturn(Optional.of(secteur1));

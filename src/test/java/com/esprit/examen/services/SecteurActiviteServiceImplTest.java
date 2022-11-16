@@ -1,7 +1,6 @@
 package com.esprit.examen.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.text.ParseException;
 import java.util.List;
@@ -14,8 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.esprit.examen.entities.SecteurActivite;
-import com.esprit.examen.repositories.SecteurActiviteRepository;
-import com.esprit.examen.services.ISecteurActiviteService;
 
 
 @TestMethodOrder(OrderAnnotation.class)
@@ -27,22 +24,26 @@ public class SecteurActiviteServiceImplTest {
 
 	@Test
 	@Order(1)
-	public void testRetrieveAllStocks() {
+	public List<SecteurActivite> testRetrieveAllStocks() {
 		List<SecteurActivite> allSActivite = secteurService.retrieveAllSecteurActivite();
 		assertEquals(0, allSActivite.size());
+		return allSActivite;
 	}
 
 	@Test
 	@Order(2)
-	public void testAddSecteur() throws ParseException {
-		SecteurActivite sa = new SecteurActivite(null,"test","testtest",null);
+	public void testAddSecteur() {
+		SecteurActivite sa = new SecteurActivite();
+		sa.setCodeSecteurActivite("test");
+		sa.setFournisseurs(null);
+		sa.setLibelleSecteurActivite("test");
 		SecteurActivite savedSecteur = secteurService.addSecteurActivite(sa);
 		assertEquals(sa.getLibelleSecteurActivite(), savedSecteur.getLibelleSecteurActivite());
 	}
 	@Test
-	//@Order(4)
+	@Order(3)
 	public void testDeleteStock() {
-		secteurService.deleteSecteurActivite(10L);
+		secteurService.deleteSecteurActivite(1L);
 	}
 
 }
