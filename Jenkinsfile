@@ -42,6 +42,18 @@ pipeline {
             sh 'mvn clean test -DfailIfNoTests=false -Dtest=com.esprit.examen.services.SecteurActiviteServiceImplTest -Dmaven.test.failure.ignore=true'
             }
         }
+        
+        stage('MVN TEST STAGE') {
+        steps{
+            sh'mvn test'
+        }
+        post {
+            always {
+            junit testResults: '*/target/surefire-reports/.xml', allowEmptyResults: true
+        }
+        }
+          
+        }
        
         stage('MVN NEXUS STAGE') {
          steps{
