@@ -36,24 +36,7 @@ pipeline {
             }
         }
         
-        stage('MVN TEST STAGE') {
-        steps{
-            sh'mvn test'
-        }
-             
-        stage('MVN SONAREQUBE STAGE') {
-            steps {
-                sh'mvn sonar:sonar -Dsonar.login=squ_822de2941abd005d96ebe223dc1aa695cfea4e79'
-                }
-           
-        }
-        post {
-            always {
-            junit testResults: '*/target/surefire-reports/.xml', allowEmptyResults: true
-            }
-         }
-          
-        }
+  
         
         stage('MVN NEXUS STAGE') {
          steps{
@@ -83,7 +66,7 @@ pipeline {
                
             }
         
-           stage('EMAIL STAGE ') {
+            stage('EMAIL STAGE ') {
         steps{
             mail bcc: '',
             body: 'Heyy , Med Amine Khaili s pipeline is working ',
