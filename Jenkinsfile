@@ -52,7 +52,7 @@ pipeline {
         stage('DOCKER BUILD IMG STAGE'){
                 steps{
                     script{
-                        sh 'docker build -t achat-1.0-s7 .'
+                        sh 'docker build -t tpAchatProject .'
                     }
                 }
             }
@@ -63,8 +63,8 @@ pipeline {
                         withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
                         sh 'docker login -u medamine1212 -p ${dockerhubpwd}'
                              }
-                        sh 'docker tag  achat-1.0-s7 medamine1212/achat-1.0-s7:latest'     
-                        sh 'docker push medamine1212/achat-1.0-s7'     
+                        sh 'docker tag tpAchatProject medamine1212/tpAchatProject:latest'     
+                        sh 'docker push medamine1212/tpAchatProject'     
                     }
                    
                 }
