@@ -16,7 +16,7 @@ pipeline {
 			      }
 		}
 		       
-		/*stage('SonarQube + JacOcO') {
+		stage('SonarQube + JacOcO') {
 			steps {
 				sh "mvn  sonar:sonar -Dsonar.projectKey=devops  -Dsonar.host.url=http://192.168.33.10:9000  -Dsonar.login=b70a78f1c2a3dcd6064c3ec446070ad10927a0f1"
 "
@@ -36,7 +36,7 @@ pipeline {
 				//sh 'mvn clean deploy -DskipTests'
 				sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
 			      }
-		 } */
+		 } 
 		/*stage('Docker Build and Push') {
                        steps {
                                withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
