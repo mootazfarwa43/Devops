@@ -16,7 +16,7 @@ pipeline {
                 }
                
             }
-        
+        /*
          stage('Packaging'){
                 steps{
                     sh 'mvn package  -Dmaven.test.skip=true'
@@ -42,7 +42,7 @@ pipeline {
             sh 'mvn clean test -DfailIfNoTests=false -Dtest=com.esprit.examen.services.SecteurActiviteServiceImplTest -Dmaven.test.failure.ignore=true'
             }
         }
-        
+        */
         stage('MVN NEXUS STAGE') {
          steps{
             sh'mvn deploy -DskipTests'
