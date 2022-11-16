@@ -30,6 +30,31 @@ pipeline {
            
         }
         
+   
+       
+        stage('MVN NEXUS STAGE') {
+         steps{
+            sh'mvn deploy -DskipTests'
+            }   
+        }
+        
+        stage('DOCKER BUILD IMG STAGE'){
+                steps{
+                    script{
+                        sh 'docker build -t tpachatproject-1.0-s7 .'
+                    }
+                }
+            }
+      
+        
+        stage('DOCKER COMPOSE STAGE') {
+            steps{
+                script{
+                        sh 'docker-compose up -d'
+                    }
+            }
+        }
+        
          stage('MOCKITO TEST STAGE') {
             steps {
            sh 'mvn clean test -DfailIfNoTests=false -Dtest=com.esprit.examen.services.SecteurActiviteServiceImplMock' 
@@ -54,21 +79,7 @@ pipeline {
         }
           
         }
-       
-        stage('MVN NEXUS STAGE') {
-         steps{
-            sh'mvn deploy -DskipTests'
-            }   
-        }
-        
-        stage('DOCKER BUILD IMG STAGE'){
-                steps{
-                    script{
-                        sh 'docker build -t tpachatproject-1.0-s7 .'
-                    }
-                }
-            }
-        
+    
           stage('DOCKER PUSH IMG STAGE '){
                 steps{
                     script{
@@ -82,14 +93,6 @@ pipeline {
                 }
                
             } 
-        
-        stage('DOCKER COMPOSE STAGE') {
-            steps{
-                script{
-                        sh 'docker-compose up -d'
-                    }
-            }
-        }
         
         stage('EMAIL STAGE ') {
         steps{
