@@ -9,29 +9,38 @@ pipeline {
             }
            
     }
-         stage('MVN COMPILE STAGE ') {
+         stage('Project compilation') {
                 steps {
-                    sh 'mvn clean compile'
+                    sh 'mvn clean install'
                    
                 }
                
             }
-       stage('MVN CLEAN STAGE'){
+       stage('Packaging'){
                 steps{
-                    sh 'mvn clean package'
-                   
+                    sh 'mvn package'
                 }
-               
             }
+        stage('MOCKITO') {
+            steps {
+           sh 'mvn clean test -Dtest=com.esprit.examen.services.SecteurActiviteServiceImplMock' 
+            }
+        }
+         stage('JUNIT') {
+            steps {
+            sh 'mvn clean test -Dtest=com.esprit.examen.services.SecteurActiviteServiceImplTest -Dmaven.test.failure.ignore=true'  
+            sh 'mvn clean test -Dtest=com.esprit.examen.services.SecteurActiviteServiceImplTest -Dmaven.test.failure.ignore=true'
+            }
+        }
+         stage('MVN TEST STAGE') {
+        steps{
+            sh'mvn test'
+        }
         stage('MVN SONAREQUBE STAGE') {
             steps {
                 sh'mvn sonar:sonar -Dsonar.login=squ_822de2941abd005d96ebe223dc1aa695cfea4e79'
                 }
            
-        }
-      stage('MVN TEST STAGE') {
-        steps{
-            sh'mvn test'
         }
         post {
             always {
@@ -40,7 +49,6 @@ pipeline {
         }
           
         }
-   
              stage('MVN NEXUS STAGE') {
         steps{
             sh'mvn deploy -DskipTests'
