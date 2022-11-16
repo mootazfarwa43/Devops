@@ -16,6 +16,6 @@ services:
   container_name: tpachat
   restart: on-failure
   ports:
-   - 9090:9090
+   - 9091:9091
   depends_on:
    - mysqldb
