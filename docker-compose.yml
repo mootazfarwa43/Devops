@@ -12,7 +12,7 @@ services:
    - /home/vagrant/mysqldata:/var/lib/mysql
     
  spring_app:
-  image: medamine1212/achat-1.0-s7:latest
+  image: medamine1212/tpachatproject-1.0-s7
   container_name: tpachat
   restart: on-failure
   ports:
