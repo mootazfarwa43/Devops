@@ -16,14 +16,10 @@ pipeline {
                 }
                
             }
-        stage('Packaging'){
-                steps{
-                    sh 'mvn package  -Dmaven.test.skip=true'
-                }
-            }
+      
          stage('MOCKITO') {
             steps {
-           sh 'mvn test -Dtest=com.esprit.examen.services.SecteurActiviteServiceImplMock' 
+           sh 'mvn clean test -Dtest=com.esprit.examen.services.SecteurActiviteServiceImplMock' 
             }
         }
       
