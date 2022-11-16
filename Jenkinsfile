@@ -69,19 +69,19 @@ pipeline {
                 }
             }
         
-//           stage('DOCKER PUSH IMG STAGE '){
-//                 steps{
-//                     script{
-//                         withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-//                         sh 'docker login -u medamine1212 -p ${dockerhubpwd}'
-//                              }
-//                         sh 'docker tag tpachatproject-1.0-s7 medamine1212/tpachatproject-1.0-s7:latest'     
-//                         sh 'docker push medamine1212/tpachatproject-1.0-s7'     
-//                     }
+          stage('DOCKER PUSH IMG STAGE '){
+                steps{
+                    script{
+                        withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                        sh 'docker login -u medamine1212 -p ${dockerhubpwd}'
+                             }
+                        sh 'docker tag tpachatproject-1.0-s7 medamine1212/tpachatproject-1.0-s7:latest'     
+                        sh 'docker push medamine1212/tpachatproject-1.0-s7'     
+                    }
                    
-//                 }
+                }
                
-//             } 
+            } 
         
         stage('DOCKER COMPOSE STAGE') {
             steps{
