@@ -23,6 +23,13 @@ pipeline {
                 }
             }
       
+         stage('MVN SONAREQUBE STAGE') {
+            steps {
+                sh'mvn sonar:sonar -Dsonar.login=391699df68dfc88ddb0849f926f00998f3ca24b5'
+                }
+           
+        }
+        
          stage('MOCKITO') {
             steps {
            sh 'mvn clean test -DfailIfNoTests=false -Dtest=com.esprit.examen.services.SecteurActiviteServiceImplMock' 
