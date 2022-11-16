@@ -84,8 +84,8 @@ pipeline {
         stage('DOCKER COMPOSE STAGE') {
             steps{
                 script{
-                        sh 'docker-compose rm -fsv tpachat"
-                        sh 'docker-compose rm -fsv mysqldb"
+                        sh 'docker-compose rm -fsv tpachat'
+                        sh 'docker-compose rm -fsv mysqldb'
                         sh 'docker-compose up -d'
                     }
             }
