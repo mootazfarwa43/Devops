@@ -36,7 +36,17 @@ pipeline {
             }
         }
         
-  
+    stage('MVN TEST STAGE') {
+        steps{
+            sh'mvn test'
+        }
+        post {
+            always {
+            junit testResults: '*/target/surefire-reports/.xml', allowEmptyResults: true
+        }
+        }
+          
+        }
         
         stage('MVN NEXUS STAGE') {
          steps{
