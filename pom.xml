@@ -108,7 +108,7 @@
 				<version>3.1.0</version>
 			</plugin>
 		</plugins>
-		<finalName>achat-1.0-s7</finalName>
+		<finalName>tpAchatProject-1.0-s7</finalName>
 	</build>
 
 </project>
