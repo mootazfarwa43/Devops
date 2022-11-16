@@ -9,6 +9,7 @@ services:
       - ci-network
     environment:
       - MYSQL_USER=root
+      - MYSQL_PASSWORD=Yossra1+2
       - MYSQL_ROOT_PASSWORD=Yossra1+3
       - MYSQL_DATABASE=tpachato
     volumes:
@@ -31,6 +32,7 @@ services:
     environment:
       - MYSQL_HOST=ci-db
       - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=Yossra1+2
       - MYSQL_ROOT_PASSWORD=Yossra1+3
       - MYSQL_DATABASE=tpachato
       - MYSQL_PORT=3306
