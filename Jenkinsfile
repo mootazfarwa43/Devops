@@ -9,7 +9,7 @@ pipeline {
 //             }
            
 //     }
-//          stage('Project compilation') {
+//          stage('PROJECT COMPILATION STAGE') {
 //                 steps {
 //                     sh 'mvn clean install -Dmaven.test.skip=true'
                    
@@ -17,7 +17,7 @@ pipeline {
                
 //             }
         
-//          stage('Packaging'){
+//          stage('PACKAGING STAGE'){
 //                 steps{
 //                     sh 'mvn package  -Dmaven.test.skip=true'
 //                 }
@@ -30,13 +30,13 @@ pipeline {
            
 //         }
         
-//          stage('MOCKITO') {
+//          stage('MOCKITO TEST STAGE') {
 //             steps {
 //            sh 'mvn clean test -DfailIfNoTests=false -Dtest=com.esprit.examen.services.SecteurActiviteServiceImplMock' 
 //             }
 //         }
         
-//          stage('JUNIT') {
+//          stage('JUNIT TEST STAGE') {
 //             steps {
 //             sh 'mvn clean test -DfailIfNoTests=false -Dtest=com.esprit.examen.services.SecteurActiviteServiceImplTest -Dmaven.test.failure.ignore=true'  
 //             sh 'mvn clean test -DfailIfNoTests=false -Dtest=com.esprit.examen.services.SecteurActiviteServiceImplTest -Dmaven.test.failure.ignore=true'
@@ -81,7 +81,7 @@ pipeline {
 //         }
 //         }   
         
-        stage('DOCKER COMPOSE') {
+        stage('DOCKER COMPOSE STAGE') {
             steps{
                 script{
                         sh 'docker-compose up -d'
