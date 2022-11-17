@@ -6,15 +6,16 @@ services:
   image: mysql:8
   restart: unless-stopped
   environment:
-          MYSQL_ROOT_PASSWORD: akram
+   MYSQL_DATABASE: tpachato
+   MYSQL_ROOT_PASSWORD: root
   volumes:
-   - /home/mysqldata:/var/lib/mysql
+   - /home/vagrant/mysqldata:/var/lib/mysql
     
  spring_app:
-  image: tpachat
-  container_name: tpachat 
+  image: akramfezzani/tpachat-1.0
+  container_name: tpachat
   restart: on-failure
   ports:
-   - 9090:8089
+   - 9091:9091
   depends_on:
    - mysqldb
