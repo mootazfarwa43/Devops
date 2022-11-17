@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.esprit.examen.dto.OperateurDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -34,5 +35,10 @@ public class Operateur implements Serializable{
 	@OneToMany
 	@JsonIgnore
 	private Set<Facture> factures;
-	
+
+	public Operateur(OperateurDto opdto) {
+		this.nom= opdto.getNom();
+		this.prenom= opdto.getPrenom();
+		this.password= opdto.getPassword();
+	}
 }

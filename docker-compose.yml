@@ -1,20 +1,25 @@
-version: "3.3"
-
+version: "3"
 services:
- mysqldb:
-  container_name: mysqldb
-  image: mysql:8
-  restart: unless-stopped
-  environment:
-   MYSQL_ROOT_PASSWORD: root
-  volumes:
-   - /home/vagrant/mysqldata:/var/lib/mysql
-    
- spring_app:
-  image: tpachat
-  container_name: tpachat 
-  restart: on-failure
-  ports:
-   - 9090:9090
-  depends_on:
-   - mysqldb
+  back-end:
+    #      container-name: spring-app
+    image: haifa123456/backcicd
+    restart: always
+    ports:
+      - 8089:8089
+    environment:
+      MYSQL_HOST: mysqlCICD
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+  db:
+    container_name: mysqlCICD
+    image: mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: tpachato
+      MYSQL_ROOT_PASSWORD: root
+  front:
+    container_name: frontend
+    image: haifa123456/frontcicd
+    ports:
+      - 80:80

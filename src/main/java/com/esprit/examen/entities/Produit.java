@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.esprit.examen.dto.ProduitDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,7 +27,7 @@ import lombok.Setter;
 public class Produit implements Serializable {
 
 	/**
-	 *  Produit DocString: Lorem ipsum
+	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -47,9 +49,13 @@ public class Produit implements Serializable {
 	@ManyToOne
 	@JsonIgnore
 	private CategorieProduit categorieProduit;
-	
 
 
-	
-
+	public Produit(ProduitDto pdto) {
+		this.codeProduit = pdto.getCodeProduit();
+		this.prix= pdto.getPrix();
+		this.libelleProduit=pdto.getLibelleProduit();
+		this.dateCreation=pdto.getDateCreation();
+		this.dateDerniereModification=pdto.getDateDerniereModification();
+	}
 }

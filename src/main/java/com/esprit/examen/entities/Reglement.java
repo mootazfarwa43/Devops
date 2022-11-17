@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.esprit.examen.dto.ReglementDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,5 +36,12 @@ public class Reglement implements Serializable{
 	@ManyToOne
 	@JsonIgnore
 	private Facture facture;
-	
+
+	public Reglement(ReglementDto rdto) {
+		this.dateReglement=rdto.getDateReglement();
+		this.payee=rdto.getPayee();
+		this.montantPaye=rdto.getMontantPaye();
+		this.montantRestant=rdto.getMontantRestant();
+
+	}
 }

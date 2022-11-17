@@ -13,12 +13,12 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+import com.esprit.examen.dto.FournisseurDto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
+
+@Builder
 @Entity
 @Getter
 @Setter
@@ -43,7 +43,25 @@ public class Fournisseur implements Serializable {
     private Set<SecteurActivite> secteurActivites;
     @OneToOne(cascade= CascadeType.ALL,fetch=FetchType.EAGER)
     private DetailFournisseur detailFournisseur;
-    
 
-	
+	public Fournisseur(FournisseurDto fdto) {
+		this.code=fdto.getCode();
+		this.libelle= fdto.getLibelle();
+	}
+
+    public Fournisseur(long l, String s, String test, Object o) {
+    }
+
+    @Override
+	public String toString() {
+		return "Fournisseur{" +
+				"idFournisseur=" + idFournisseur +
+				", code='" + code + '\'' +
+				", libelle='" + libelle + '\'' +
+				", categorieFournisseur=" + categorieFournisseur +
+				", factures=" + factures +
+				", secteurActivites=" + secteurActivites +
+				", detailFournisseur=" + detailFournisseur +
+				'}';
+	}
 }

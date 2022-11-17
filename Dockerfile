@@ -1,4 +1,10 @@
-FROM openjdk:8-jdk-alpine
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+FROM openjdk:8
+
+#EXPOSE 8091
+WORKDIR /app
+
+COPY backend-spring/target/tpAchatProject-1.0.jar /app/tpAchatProject-1.0.jar
+
+COPY backend-spring/src/main/resources/application.properties /app
+
+ENTRYPOINT ["java","-jar","tpAchatProject-1.0.jar", "-Dspring.config.location=", "/app/application.properties"]
