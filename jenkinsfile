@@ -14,7 +14,7 @@ pipeline {
                
               script {
 
-                  sh 'mvn -f backend-spring/pom.xml clean'
+                  sh 'mvn  clean'
 
  
                       }
@@ -25,7 +25,7 @@ pipeline {
                
               script {
 
-                  sh 'mvn -f backend-spring/pom.xml compile'
+                  sh 'mvn  compile'
 
  
                       }
@@ -36,7 +36,7 @@ pipeline {
                
               script {
 
-                  sh 'mvn -f backend-spring/pom.xml test'
+                  sh 'mvn  test'
 
  
                       }
@@ -44,9 +44,10 @@ pipeline {
          }
           stage('Artifact Construction') {
                       steps{
-                          sh "mvn -B -DskipTests -f backend-spring/pom.xml package "
+                          sh "mvn -B -DskipTests  package "
                       }
                   }
+                  /*
           stage('SONAR') {
             steps {
                
@@ -95,7 +96,7 @@ sh 'mvn -f backend-spring/pom.xml deploy -e'                      }
                                       sh ' docker-compose -f backend-spring/docker-compose.yml up -d '
                                     }
                                 }
-                            }
+                            } */
      }
      
      }
