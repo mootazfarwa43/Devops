@@ -74,7 +74,41 @@ pipeline {
            
         }
          
+stage('MVN NEXUS STAGE') {
+         steps{
+            sh'mvn deploy -DskipTests'
+            }   
+        }
+        
+        stage('DOCKER BUILD IMG STAGE'){
+                steps{
+                    script{
+                        sh 'docker build -t tpachat-1.0 .'
+                    }
+                }
+            }
+      
+        stage('DOCKER PUSH IMG STAGE '){
+        steps{
+            script{
+                withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                sh 'docker login -u akramfezzani -p ${dockerhubpwd}'
+                     }
+                sh 'docker tag tpachat-1.0 akramfezzani/tpachat-1.0:latest'     
+                sh 'docker push akramfezzani/tpachat-1.0'     
+            }
 
+        }
+
+    }
+
+        stage('DOCKER COMPOSE STAGE') {
+            steps{
+                script{
+                        sh 'docker-compose up -d'
+                    }
+            }
+        }
        
         
     }
