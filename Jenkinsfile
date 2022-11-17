@@ -67,7 +67,12 @@ pipeline {
                 }
             }
         }
-        
+         stage('MVN SONAREQUBE STAGE') {
+            steps {
+                sh'mvn sonar:sonar -Dsonar.login=2f76bab51dad5b5a9c1f1bd16ae8deb05886e3d0'
+                }
+           
+        }
          
 
        
