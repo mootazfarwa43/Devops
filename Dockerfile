@@ -1,4 +1,4 @@
 FROM openjdk:11
 EXPOSE 8089
-ADD target/tpachat-1.0.jar tpachat.jar
-ENTRYPOINT ["java", "-jar", "/tpachat.jar" ]
+ADD target/achat-1.0.jar achat.jar
+ENTRYPOINT ["java","-jar","/achat.jar"]
