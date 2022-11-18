@@ -11,8 +11,8 @@ services:
    - /home/vagrant/mysqldata:/var/lib/mysql
     
  spring_app:
-  image: tpachat
-  container_name: tpachat 
+  image: achatproject
+  container_name: achatproject 
   restart: on-failure
   depends_on:
    - mysqldb
