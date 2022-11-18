@@ -118,6 +118,14 @@ pipeline {
             }
         }
        
-        
+           stage('EMAIL STAGE ') {
+        steps{
+            mail bcc: '',
+            body: ' pipeline is working ',
+            cc: '', from: '',
+            replyTo: '', subject: '[test valiation] The pipeline is working on something here ...',
+            to: 'akram.fezzani@esprit.tn'
+        }
+        }  
     }
 }
