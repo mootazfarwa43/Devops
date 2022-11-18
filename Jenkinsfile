@@ -16,25 +16,48 @@ pipeline {
                 sh "mvn -version"
                 
 
+            post {
+                // If Maven was able to run the tests, even if some of the test
+                // failed, record the test results and archive the jar file.
+                success {
+                 //   junit '**/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'target/*.jar'
+                }
             }
-
         }
-       stage('Maven build'){
+          stage('UNIT testing'){
             
-             stage('PROJECT COMPILATION ') {
-                steps {
-                    sh 'mvn clean install -Dmaven.test.skip=true'
-                   
-                }
-               
-            }
-        
-         stage('PACKAGING '){
-                steps{
-                    sh 'mvn package  -Dmaven.test.skip=true'
+            steps{
+                
+                script{
+                    
+                    sh 'mvn test'
                 }
             }
+        }
         
+         stage('Integration testing'){
+            
+            steps{
+                
+                script{
+                    
+                    sh 'mvn verify -DskipUnitTests'
+                }
+            }
+        }
+        
+        
+         stage('Maven build'){
+            
+            steps{
+                
+                script{
+                    
+                    sh 'mvn clean install'
+                }
+            }
+        }
         
         
          stage('MVN SONAREQUBE STAGE') {
