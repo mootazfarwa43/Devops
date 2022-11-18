@@ -1,20 +1,18 @@
-package com.esprit.examen.services;
+package tn.esprit.rh.achat.services;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import tn.esprit.rh.achat.entities.DetailFournisseur;
+import tn.esprit.rh.achat.entities.Fournisseur;
+import tn.esprit.rh.achat.entities.SecteurActivite;
+import tn.esprit.rh.achat.repositories.DetailFournisseurRepository;
+import tn.esprit.rh.achat.repositories.FournisseurRepository;
+import tn.esprit.rh.achat.repositories.ProduitRepository;
+import tn.esprit.rh.achat.repositories.SecteurActiviteRepository;
 
 import java.util.Date;
 import java.util.List;
-
-import javax.transaction.Transactional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import com.esprit.examen.entities.DetailFournisseur;
-import com.esprit.examen.entities.Fournisseur;
-import com.esprit.examen.entities.SecteurActivite;
-import com.esprit.examen.repositories.DetailFournisseurRepository;
-import com.esprit.examen.repositories.FournisseurRepository;
-import com.esprit.examen.repositories.ProduitRepository;
-import com.esprit.examen.repositories.SecteurActiviteRepository;
-import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
@@ -87,3 +85,8 @@ public class FournisseurServiceImpl implements IFournisseurService {
 	
 
 }
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privac
