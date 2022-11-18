@@ -4,11 +4,11 @@ pipeline {
 
 	stages {
 		
-		/*stage('Junit') {
+		stage('Junit') {
 			steps {
 				sh 'mvn test'
 			      } 
-		}*/
+		}
 		stage('Build Artifact - Maven') {
 			steps {
 				sh "mvn clean package -DskipTests=true"
@@ -47,7 +47,7 @@ pipeline {
          			}
      			  }
     		}*/
-		 stage('Docker compose') {
+		/* stage('Docker compose') {
       		      steps {
          parallel(
            "Docker compose": {
@@ -59,7 +59,7 @@ pipeline {
            }
          )
        }
-     }
+     }*/
 	}  
 			post {
 				success {
