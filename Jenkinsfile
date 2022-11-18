@@ -73,13 +73,28 @@ pipeline {
                 }
            
         }
-         
-stage('MVN NEXUS STAGE') {
-         steps{
-            sh'mvn deploy -DskipTests'
-            }   
+      
+      stage ('Mockito/Junit') {
+             steps {
+
+            sh "mvn test"
+                echo """les tests sont pris en charge"""
+                }
+            }
+  /*       
+stage('nexus package '){
+            steps {
+ sh 'mvn deploy:deploy-file -DgroupId=com.esprit.examen \
+  -DartifactId=tpAchatProject \
+  -Dversion=1.0 \
+  -Dpackaging=jar\
+  -Dfile=target/tpachat-1.0.jar  \
+  -DgeneratePom=true \
+  -DrepositoryId=achat.repo\
+  -Durl=http://192.168.1.25:8081/repository/maven-releases/ '
+            }
         }
-        
+        */
         stage('DOCKER BUILD IMG STAGE'){
                 steps{
                     script{
