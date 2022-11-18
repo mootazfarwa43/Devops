@@ -21,43 +21,19 @@ pipeline {
         }
        stage('Maven build'){
             
-            steps{
-                
-                script{
-                    
-                    sh 'mvn clean install '
+             stage('PROJECT COMPILATION ') {
+                steps {
+                    sh 'mvn clean install -Dmaven.test.skip=true'
+                   
                 }
+               
             }
-        }
-      
-      stage('PACKAGING '){
-                steps{
-                    sh 'mvn package  '
-                }
-            }
-      
-      
-          stage('UNIT testing'){
-            
-            steps{
-                
-                script{
-                    
-                    sh 'mvn test'
-                }
-            }
-        }
         
-         stage('Integration testing'){
-            
-            steps{
-                
-                script{
-                    
-                    sh 'mvn verify -DskipUnitTests'
+         stage('PACKAGING '){
+                steps{
+                    sh 'mvn package  -Dmaven.test.skip=true'
                 }
             }
-        }
         
         
         
@@ -98,6 +74,9 @@ pipeline {
                     }
                 }
             }
+         
+         
+         
       
         stage('DOCKER PUSH IMG STAGE '){
         steps{
