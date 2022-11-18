@@ -7,12 +7,6 @@ pipeline {
         maven "M3"
     }
   
-  stage('Maven clean'){
-            steps {
-               sh 'mvn clean'
-            }
-}
-
     stages {
         stage('Build') {
             steps {
