@@ -88,10 +88,13 @@ pipeline {
             }   
         }
          */
-        stage('DOCKER BUILD IMG STAGE'){
+     
+      
+      
+      stage('DOCKER BUILD IMG STAGE'){
                 steps{
                     script{
-                        sh 'docker build -t tpAchatProject-1.0 .'
+                        sh 'docker build -t tpachatproject-1.0 .'
                     }
                 }
             }
