@@ -1,4 +1,3 @@
-
 pipeline {
   agent {label "maven"}
 
@@ -6,7 +5,7 @@ pipeline {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "M3"
     }
-  
+
     stages {
         stage('Build') {
             steps {
@@ -73,7 +72,7 @@ pipeline {
                 }
            
         }
-      /*
+      /* 
       stage ('Mockito/Junit') {
              steps {
 
@@ -81,7 +80,7 @@ pipeline {
                 echo """les tests sont pris en charge"""
                 }
             }
-  
+        
 stage('nexus package '){
             steps {
  sh 'mvn deploy:deploy-file -DgroupId=com.esprit.examen \
