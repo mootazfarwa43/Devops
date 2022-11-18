@@ -18,8 +18,4 @@ services:
     environment:
       MYSQL_DATABASE: tpachato
       MYSQL_ROOT_PASSWORD: root
-  front:
-    container_name: frontend
-    image: yassine123456/frontcicd
-    ports:
-      - 80:80
+ 
