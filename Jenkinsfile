@@ -95,7 +95,7 @@ pipeline {
                     }
                 }
             }
-      
+       */
         stage('DOCKER PUSH IMG STAGE '){
         steps{
             script{
@@ -117,7 +117,7 @@ pipeline {
                     }
             }
         }
-       */
+      
            stage('EMAIL STAGE ') {
         steps{
             mail bcc: '',
