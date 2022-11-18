@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.junit.jupiter.api.Order;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
@@ -42,27 +43,37 @@ public class OperateurServcieTest {
 	
 	@MockBean
 	private OperateurRepository operateurRepository;
-	
-	private Operateur operateur1 = new Operateur("Med Amine","Khaili","123456");
-	private Operateur operateur2 = new Operateur("Flen","Fouleni","123456");
+
 	  
 	@Autowired
 	IOperateurService operateurService;
 	
     
     @Test
+	@Order(1)
 	public void addOperateurTest() {
+		Operateur operateur1 = new Operateur("Med Amine","Khaili","123456");
     	when(operateurRepository.save(operateur1)).thenReturn(operateur1);
     	assertNotNull(operateur1);
     	
     	Operateur persisted = operateurService.addOperateur(operateur1);
-		assertEquals(operateur1, persisted); 
-    	
+		assertEquals(operateur1, persisted);
+
+		Operateur operateur2 = new Operateur("Flen","Fouleni","123456");
+		when(operateurRepository.save(operateur2)).thenReturn(operateur2);
+		assertNotNull(operateur2);
+
+		Operateur persisted2 = operateurService.addOperateur(operateur2);
+		assertEquals(operateur2, persisted2);
+
 		System.out.println("Add operator works !");
 	}
     
-    @Test 
+    @Test
+	@Order(2)
     public void retrieveAllOperateursTest() {
+		Operateur operateur1 = new Operateur("Med Amine","Khaili","123456");
+		Operateur operateur2 = new Operateur("Flen","Fouleni","123456");
     	when(operateurRepository.findAll()).thenReturn(Stream
     			.of(operateur1,operateur2)
     			.collect(Collectors.toList()));
@@ -74,8 +85,11 @@ public class OperateurServcieTest {
    
     
     
-    @Test 
+    @Test
+	@Order(3)
     public void UpdateOperateurTest() {
+
+		Operateur operateur1 = operateurRepository.findById(1L).get();
     	when(operateurRepository.save(operateur1)).thenReturn(operateur1);
     	assertNotNull(operateur1);
     	assertEquals(operateur1, operateurService.updateOperateur(operateur1));
@@ -83,8 +97,10 @@ public class OperateurServcieTest {
     }
     
     @Test
+	@Order(4)
     public void retrieveOperateurTest() {
-    	when(operateurRepository.findById(operateur1.getIdOperateur())).thenReturn(Optional.of(operateur1));
+		Operateur operateur1 = new Operateur("Med Amine","Khaili","123456");
+    	when(operateurRepository.findById(1L)).thenReturn(Optional.of(operateur1));
     	assertEquals(operateur1, operateurService.retrieveOperateur(operateur1.getIdOperateur()));
     	System.out.println("Retrieve operator works !");
     }
