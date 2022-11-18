@@ -87,7 +87,7 @@ pipeline {
             sh'mvn deploy -DskipTests'
             }   
         }
-        */
+        
         stage('DOCKER BUILD IMG STAGE'){
                 steps{
                     script{
@@ -109,7 +109,7 @@ pipeline {
         }
 
     }
-
+*/
         stage('DOCKER COMPOSE STAGE') {
             steps{
                 script{
