@@ -25,14 +25,14 @@ pipeline {
                 
                 script{
                     
-                    sh 'mvn clean install -Dmaven.test.skip=true'
+                    sh 'mvn clean install '
                 }
             }
         }
       
       stage('PACKAGING '){
                 steps{
-                    sh 'mvn package  -Dmaven.test.skip=true'
+                    sh 'mvn package  '
                 }
             }
       
