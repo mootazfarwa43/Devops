@@ -109,7 +109,7 @@ pipeline {
         }
 
     }
-*/
+
         stage('DOCKER COMPOSE STAGE') {
             steps{
                 script{
@@ -117,7 +117,7 @@ pipeline {
                     }
             }
         }
-       
+       */
            stage('EMAIL STAGE ') {
         steps{
             mail bcc: '',
