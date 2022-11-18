@@ -11,8 +11,8 @@ services:
    volumes:
       - db:/var/lib/mysql
  app:
-   container_name: springg
-   image: "springg"
+   container_name: spring
+   image: "spring"
    depends_on:
      - mysqldb
    build: .
