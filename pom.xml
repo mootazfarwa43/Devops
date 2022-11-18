@@ -17,11 +17,11 @@
 	</properties>
 
 	<distributionManagement>
-		<site>
-			<id>sonatype-site</id>
-			<name>Sonatype Book Examples</name>
+		<repository>
+			<id>deploymentRepo</id>
+			<name>deploymentRepo</name>
 			<url>http://192.168.1.18:8081/repository/maven-releases/</url>
-		</site>
+		</repository>
 	</distributionManagement>
 
 	<dependencies>
