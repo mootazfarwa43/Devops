@@ -16,16 +16,7 @@ pipeline {
                 sh "mvn -version"
             }
         }
-          stage('UNIT testing'){
-            
-            steps{
-                
-                script{
-                    
-                    sh 'mvn test -Dmaven.test.skip=true'
-                }
-            }
-        }
+         
         
          stage('Integration testing'){
             
@@ -58,18 +49,7 @@ pipeline {
            
         }
       
-      stage ('Mockito Test') {
-             steps {
-
-            sh "mvn test"
-                echo """les tests sont pris en charge"""
-                }
-            }
-      
-        stage('JUNIT Test') {
-            steps {
-            sh 'mvn clean test -DfailIfNoTests=false -Dtest=com.esprit.examen.services.FournisseurServiceImplTest  -Dmaven.test.failure.ignore=true'  
-            }
+   }
         }
         /*
  stage('MVN NEXUS STAGE') {
@@ -113,7 +93,29 @@ pipeline {
                     }
             }
         }
+     
+      stage('UNIT testing'){
+            
+            steps{
+                
+                script{
+                    
+                    sh 'mvn test -Dmaven.test.skip=true'
+                }
+            }
+        }
+         stage ('Mockito Test') {
+             steps {
+
+            sh "mvn test"
+                echo """les tests sont pris en charge"""
+                }
+            }
       
+        stage('JUNIT Test') {
+            steps {
+            sh 'mvn clean test -DfailIfNoTests=false -Dtest=com.esprit.examen.services.FournisseurServiceImplTest  -Dmaven.test.failure.ignore=true'  
+            
            stage('EMAIL STAGE ') {
         steps{
             mail bcc: '',
