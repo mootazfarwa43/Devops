@@ -33,6 +33,14 @@ pipeline {
                 }
             }
         }
+      
+      stage('PACKAGING '){
+                steps{
+                    sh 'mvn package  -Dmaven.test.skip=true'
+                }
+            }
+      
+      
           stage('UNIT testing'){
             
             steps{
