@@ -12,13 +12,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.esprit.examen.entities.SecteurActivite;
 import com.esprit.examen.repositories.SecteurActiviteRepository;
-import com.esprit.examen.services.SecteurActiviteServiceImpl;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -118,8 +115,8 @@ public class SecteurActiviteServiceImplMock {
 	secteur1.setLibelleSecteurActivite("test");
 
 	secteur1.setIdSecteurActivite(7L);
-	
-	Mockito.lenient().when(SecteurRepository.findById(secteur1.getIdSecteurActivite())).thenReturn(Optional.of(secteur1));
+
+	doReturn(Optional.of(secteur1)).when(SecteurRepository.findById(secteur1.getIdSecteurActivite()));
 
 	SecteurService.deleteSecteurActivite(7L);
 	verify(SecteurRepository).deleteById(secteur1.getIdSecteurActivite());
@@ -127,8 +124,6 @@ public class SecteurActiviteServiceImplMock {
 	System.out.println(secteur1);
 	System.out.println(" Delete is working correctly...!!");  
 	}
-	
-	
-	
-	
+
+
 }

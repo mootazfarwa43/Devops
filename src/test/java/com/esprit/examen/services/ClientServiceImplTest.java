@@ -27,7 +27,7 @@ public class ClientServiceImplTest {
 	@Autowired
 	IClientService clientService;
 
-	
+
 	@Test
 	public void testAddClient() throws ParseException {
 
