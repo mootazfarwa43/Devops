@@ -73,13 +73,19 @@ pipeline {
            
         }
       
-      stage ('Mockito/Junit') {
+      stage ('Mockito Test') {
              steps {
 
             sh "mvn test"
                 echo """les tests sont pris en charge"""
                 }
             }
+      
+        stage('JUNIT Test') {
+            steps {
+            sh 'mvn clean test -DfailIfNoTests=false -Dtest=com.esprit.examen.services.FournisseurServiceImplTest  -Dmaven.test.failure.ignore=true'  
+            }
+        }
         /*
 stage('nexus package '){
             steps {
