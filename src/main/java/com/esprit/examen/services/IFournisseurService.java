@@ -1,8 +1,7 @@
-package tn.esprit.rh.achat.services;
-
-import tn.esprit.rh.achat.entities.Fournisseur;
+package com.esprit.examen.services;
 
 import java.util.List;
+import com.esprit.examen.entities.Fournisseur;
 
 public interface IFournisseurService {
 
@@ -19,3 +18,4 @@ public interface IFournisseurService {
 	void assignSecteurActiviteToFournisseur(Long idSecteurActivite, Long idFournisseur);
 
 }
+
