@@ -1,7 +1,8 @@
-package com.esprit.examen.services;
+package tn.esprit.rh.achat.services;
+
+import tn.esprit.rh.achat.entities.Fournisseur;
 
 import java.util.List;
-import com.esprit.examen.entities.Fournisseur;
 
 public interface IFournisseurService {
 
