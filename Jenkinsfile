@@ -103,7 +103,7 @@ stage('nexus package '){
         stage('DOCKER BUILD IMG STAGE'){
                 steps{
                     script{
-                        sh 'docker build -t tpachat-1.1 .'
+                        sh 'docker build -t tpachat-1.0 .'
                     }
                 }
             }
