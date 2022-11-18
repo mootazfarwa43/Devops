@@ -42,13 +42,13 @@ pipeline {
                           sh "mvn -B -DskipTests  package "
                       }
                   }
-                  /*
+                  
           stage('SONAR') {
             steps {
                
               script {
 
-                  sh 'mvn -f backend-spring/pom.xml sonar:sonar  -Dsonar.sources=src/main/java -Dsonar.css.node=. -Dsonar.java.binaries=. -Dsonar.host.url=http://172.10.0.140:9000/ -Dsonar.login=admin   -Dsonar.password=sonar'
+                  sh 'mvn  sonar:sonar  -Dsonar.sources=src/main/java -Dsonar.css.node=. -Dsonar.java.binaries=. -Dsonar.host.url=http://172.16.1.132:9000/ -Dsonar.login=admin   -Dsonar.password=sonar'
 
  
                       }
@@ -60,13 +60,13 @@ pipeline {
                
               script {
 
-sh 'mvn -f backend-spring/pom.xml deploy -e'                      }
+sh 'mvn  deploy -e'                      }
                    }         
          }
           stage('Build Docker Image'){
                       steps {
                           script{
-          				    sh 'docker image build . -t haifa123456/backcicd -f backend-spring/Dockerfile '
+          				    sh 'docker image build . -t yassine123456/backcicd -f backend-spring/Dockerfile '
                           }
                       }
           		}
@@ -74,14 +74,14 @@ sh 'mvn -f backend-spring/pom.xml deploy -e'                      }
                                 steps {
                                     script {
 
-                                        sh 'docker login -u haifa123456 -p haifabrineg'}
+                                        sh 'docker login -u yassine123456 -p yassine123'}
                                 }
                                 }
                           stage('Pushing Docker Image') {
                                 steps {
                                     script {
 
-                                     sh 'docker push haifa123456/backcicd'
+                                     sh 'docker push yassine123456/backcicd'
                                     }
                                 }
                           }
@@ -91,7 +91,7 @@ sh 'mvn -f backend-spring/pom.xml deploy -e'                      }
                                       sh ' docker-compose -f backend-spring/docker-compose.yml up -d '
                                     }
                                 }
-                            } */
+                            } 
      }
      
      }
