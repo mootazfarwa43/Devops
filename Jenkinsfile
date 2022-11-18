@@ -72,7 +72,7 @@ pipeline {
                 }
            
         }
-      /* 
+      
       stage ('Mockito/Junit') {
              steps {
 
@@ -80,7 +80,7 @@ pipeline {
                 echo """les tests sont pris en charge"""
                 }
             }
-        
+        /*
 stage('nexus package '){
             steps {
  sh 'mvn deploy:deploy-file -DgroupId=com.esprit.examen \
