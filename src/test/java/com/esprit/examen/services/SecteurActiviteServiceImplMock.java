@@ -40,10 +40,10 @@ public class SecteurActiviteServiceImplMock {
 		secteur.setCodeSecteurActivite("test");
 		secteur.setFournisseurs(null);
 		secteur.setLibelleSecteurActivite("test");
-		secteur.setIdSecteurActivite(1L);
+		secteur.setIdSecteurActivite(SecteurService.retrieveAllSecteurActivite().get(0).getIdSecteurActivite());
 		
-	Mockito.when(SecteurRepository.findById(1L)).thenReturn(Optional.of(secteur));
-	SecteurService.retrieveSecteurActivite(1L);
+	Mockito.when(SecteurRepository.findById(SecteurService.retrieveAllSecteurActivite().get(0).getIdSecteurActivite())).thenReturn(Optional.of(secteur));
+	SecteurService.retrieveSecteurActivite(SecteurService.retrieveAllSecteurActivite().get(0).getIdSecteurActivite()));
 	Assertions.assertNotNull(secteur);
 	
 	System.out.println(secteur); 
@@ -61,7 +61,6 @@ public class SecteurActiviteServiceImplMock {
 		secteur2.setCodeSecteurActivite("test");
 		secteur2.setFournisseurs(null);
 		secteur2.setLibelleSecteurActivite("test");
-		secteur2.setIdSecteurActivite(2L);
 		
 		SecteurService.addSecteurActivite(secteur2);
 		verify(SecteurRepository, times(1)).save(secteur2);
@@ -114,11 +113,11 @@ public class SecteurActiviteServiceImplMock {
 	secteur1.setFournisseurs(null);
 	secteur1.setLibelleSecteurActivite("test");
 
-	secteur1.setIdSecteurActivite(7L);
+	secteur1.setIdSecteurActivite(SecteurService.retrieveAllSecteurActivite().get(0).getIdSecteurActivite()));
 
 	doReturn(Optional.of(secteur1)).when(SecteurRepository.findById(secteur1.getIdSecteurActivite()));
 
-	SecteurService.deleteSecteurActivite(7L);
+	SecteurService.deleteSecteurActivite(SecteurService.retrieveAllSecteurActivite().get(0).getIdSecteurActivite()));
 	verify(SecteurRepository).deleteById(secteur1.getIdSecteurActivite());
 	
 	System.out.println(secteur1);

@@ -20,18 +20,10 @@ import com.esprit.examen.entities.SecteurActivite;
 public class SecteurActiviteServiceImplTest {
 	@Autowired
 	ISecteurActiviteService secteurService;
-	
+
 
 	@Test
 	@Order(1)
-	public List<SecteurActivite> testRetrieveAllStocks() {
-		List<SecteurActivite> allSActivite = secteurService.retrieveAllSecteurActivite();
-		assertEquals(0, allSActivite.size());
-		return allSActivite;
-	}
-
-	@Test
-	@Order(2)
 	public void testAddSecteur() {
 		SecteurActivite sa = new SecteurActivite();
 		sa.setCodeSecteurActivite("test");
@@ -40,10 +32,20 @@ public class SecteurActiviteServiceImplTest {
 		SecteurActivite savedSecteur = secteurService.addSecteurActivite(sa);
 		assertEquals(sa.getLibelleSecteurActivite(), savedSecteur.getLibelleSecteurActivite());
 	}
+
+	@Test
+	@Order(2)
+	public List<SecteurActivite> testRetrieveAllStocks() {
+		List<SecteurActivite> allSActivite = secteurService.retrieveAllSecteurActivite();
+		assertEquals(0, allSActivite.size());
+		return allSActivite;
+	}
+
+
 	@Test
 	@Order(3)
 	public void testDeleteStock() {
-		secteurService.deleteSecteurActivite(1L);
+		secteurService.deleteSecteurActivite(secteurService.retrieveAllSecteurActivite().get(0).getIdSecteurActivite());
 	}
 
 }
