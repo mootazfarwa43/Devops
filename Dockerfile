@@ -1,4 +1,4 @@
 FROM openjdk:11
 EXPOSE 8089
-ADD home/Devops/agent/workspace/Devops/target/tpachat-1.0.jar tpachat-1.0.jar
-ENTRYPOINT ["java", "-jar", "/tpachat-1.0.jar" ]
+ADD target/tpachatproject-1.0.jar tpachatproject-1.0.jar
+ENTRYPOINT ["java", "-jar", "/tpachatproject-1.0.jar" ]
