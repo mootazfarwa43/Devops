@@ -85,14 +85,14 @@ pipeline {
         }
 
     }
- 
+ /*
         stage('DOCKER COMPOSE STAGE') {
             steps{
                 script{
                         sh 'docker-compose up -d'
                     }
             }
-        }
+        }*/
      
       stage('UNIT testing'){
             
