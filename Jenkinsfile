@@ -7,7 +7,7 @@ pipeline {
     }
 
    stages {
-        stage('Build') {
+        stage('Git') {
             steps {
                 // Get some code from a GitHub repository
                 echo "Getting Project from Git"; 
