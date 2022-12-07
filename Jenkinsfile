@@ -60,7 +60,7 @@ pipeline {
        
      
       
-      
+       */
       stage('DOCKER BUILD IMG STAGE'){
                 steps{
                     script{
@@ -85,7 +85,7 @@ pipeline {
         }
 
     }
-  */
+ 
         stage('DOCKER COMPOSE STAGE') {
             steps{
                 script{
