@@ -57,7 +57,7 @@ pipeline {
             sh'mvn deploy -DskipTests'
             }   
         }
-         */
+       
      
       
       
@@ -85,7 +85,7 @@ pipeline {
         }
 
     }
-
+  */
         stage('DOCKER COMPOSE STAGE') {
             steps{
                 script{
