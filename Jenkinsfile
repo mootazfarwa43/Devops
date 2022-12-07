@@ -92,7 +92,7 @@ pipeline {
                         sh 'docker-compose up -d'
                     }
             }
-        }*/
+       
      
       stage('UNIT testing'){
             
@@ -104,6 +104,7 @@ pipeline {
                 }
             }
         }
+         }*/
          stage ('Mockito Test') {
              steps {
 
