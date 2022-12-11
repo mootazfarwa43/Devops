@@ -29,31 +29,6 @@ pipeline {
                 }
            
         }
-        
-        stage('MOCKITO TEST STAGE') {
-            steps {
-           sh 'mvn clean test -DfailIfNoTests=false -Dtest=com.esprit.examen.services.SecteurActiviteServiceImplMock'
-            }
-        }
-        
-         stage('JUNIT TEST STAGE') {
-            steps {
-            sh 'mvn clean test -DfailIfNoTests=false -Dtest=com.esprit.examen.services.SecteurActiviteServiceImplTest -Dmaven.test.failure.ignore=true'  
-            sh 'mvn clean test -DfailIfNoTests=false -Dtest=com.esprit.examen.services.SecteurActiviteServiceImplTest -Dmaven.test.failure.ignore=true'
-            }
-        }
-        
-        stage('MVN TEST STAGE') {
-        steps{
-            sh'mvn test'
-        }
-        post {
-            always {
-            junit testResults: '*/target/surefire-reports/.xml', allowEmptyResults: true
-        }
-        }
-          
-        }
        
         stage('MVN NEXUS STAGE') {
          steps{
@@ -72,9 +47,7 @@ pipeline {
         stage('DOCKER PUSH IMG STAGE '){
         steps{
             script{
-                withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                sh 'docker login -u medamine1212 -p ${dockerhubpwd}'
-                     }
+                sh 'docker login -u medamine1212 -p dockerpassword'
                 sh 'docker tag tpachatproject-1.0-s7 medamine1212/tpachatproject-1.0-s7:latest'     
                 sh 'docker push medamine1212/tpachatproject-1.0-s7'     
             }
@@ -91,6 +64,30 @@ pipeline {
             }
         }
         
+          
+        stage('MVN TEST STAGE') {
+        steps{
+            sh'mvn test'
+        }
+        post {
+            always {
+            junit testResults: '*/target/surefire-reports/.xml', allowEmptyResults: true
+        }
+        }
+          
+        }
+         stage('MOCKITO TEST STAGE') {
+            steps {
+           sh 'mvn clean test -DfailIfNoTests=false -Dtest=com.esprit.examen.services.SecteurActiviteServiceImplMock' 
+            }
+        }
+        
+         stage('JUNIT TEST STAGE') {
+            steps {
+            sh 'mvn clean test -DfailIfNoTests=false -Dtest=com.esprit.examen.services.SecteurActiviteServiceImplTest -Dmaven.test.failure.ignore=true'  
+            sh 'mvn clean test -DfailIfNoTests=false -Dtest=com.esprit.examen.services.SecteurActiviteServiceImplTest -Dmaven.test.failure.ignore=true'
+            }
+        }
         
         stage('EMAIL STAGE ') {
         steps{
