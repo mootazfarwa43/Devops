@@ -57,9 +57,9 @@ pipeline {
         steps{
             script{
                 sh 'docker login -u medamine1212 -p dockerpassword'
-                sh 'docker rmi --force tpachatproject-1.0-s7'
-                sh 'docker tag tpachatproject-1.0-s7 medamine1212/tpachatproject-1.0-s7:latest'     
-                sh 'docker push medamine1212/tpachatproject-1.0-s7'     
+                sh 'docker rmi --force medamine1212/tpachatproject-1.0-s7'
+                sh 'docker tag medamine1212/tpachatproject-1.0-s7 medamine1212/tpachatproject-1.0-s7:latest'     
+                sh 'docker push medamine1212/tpachatproject-1.0-s7'
             }
 
         }
