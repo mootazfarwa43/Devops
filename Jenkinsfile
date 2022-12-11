@@ -32,7 +32,7 @@ pipeline {
         
         stage('MOCKITO TEST STAGE') {
             steps {
-           sh 'mvn clean test -DfailIfNoTests=false -Dtest=com.esprit.examen.services.SecteurActiviteServiceImplMock' 
+           sh 'mvn clean test -DfailIfNoTests=false -Dtest=com.esprit.examen.services.SecteurActiviteServiceImplMock'
             }
         }
         
