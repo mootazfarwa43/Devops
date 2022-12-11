@@ -9,32 +9,32 @@ pipeline {
             }
            
     }
-         stage('PROJECT COMPILATION STAGE') {
-                steps {
-                    sh 'mvn clean install -Dmaven.test.skip=true'
+//          stage('PROJECT COMPILATION STAGE') {
+//                 steps {
+//                     sh 'mvn clean install -Dmaven.test.skip=true'
                    
-                }
+//                 }
                
-            }
+//             }
         
-         stage('PACKAGING STAGE'){
-                steps{
-                    sh 'mvn package  -Dmaven.test.skip=true'
-                }
-            }
+//          stage('PACKAGING STAGE'){
+//                 steps{
+//                     sh 'mvn package  -Dmaven.test.skip=true'
+//                 }
+//             }
       
-         stage('MVN SONAREQUBE STAGE') {
-            steps {
-                sh'mvn sonar:sonar -Dsonar.login=squ_79069b12f407f0d075c45f7c0563a6be6e49658d'
-                }
+//          stage('MVN SONAREQUBE STAGE') {
+//             steps {
+//                 sh'mvn sonar:sonar -Dsonar.login=squ_79069b12f407f0d075c45f7c0563a6be6e49658d'
+//                 }
            
-        }
+//         }
        
-        stage('MVN NEXUS STAGE') {
-         steps{
-            sh'mvn deploy -DskipTests'
-            }   
-        }
+//         stage('MVN NEXUS STAGE') {
+//          steps{
+//             sh'mvn deploy -DskipTests'
+//             }   
+//         }
         
         stage('DOCKER COMPOSE STAGE') {
             steps{
