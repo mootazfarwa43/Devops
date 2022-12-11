@@ -7,7 +7,7 @@ services:
   restart: unless-stopped
   environment:
    MYSQL_DATABASE: tpachato
-   MYSQL_ROOT_PASSWORD: root
+   MYSQL_ROOT_PASSWORD: admin
   volumes:
    - /home/vagrant/mysqldata:/var/lib/mysql
     
