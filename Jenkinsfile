@@ -36,6 +36,15 @@ pipeline {
             }   
         }
         
+        stage('DOCKER COMPOSE STAGE') {
+            steps{
+                script{
+                        sh 'docker-compose up -d'
+                    }
+            }
+        }
+        
+        
         stage('DOCKER BUILD IMG STAGE'){
                 steps{
                     script{
@@ -57,15 +66,6 @@ pipeline {
 
     }
 
-        stage('DOCKER COMPOSE STAGE') {
-            steps{
-                script{
-                        sh 'docker-compose up -d'
-                    }
-            }
-        }
-        
-          
         stage('MVN TEST STAGE') {
         steps{
             sh'mvn test'
